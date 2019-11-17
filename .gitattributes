@@ -1,0 +1,2 @@
+*.python linguist-detectable=true
+*.django linguist-detectable=true
