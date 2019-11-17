@@ -1,0 +1,128 @@
+<!Doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>medical</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%} ">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    
+</head>
+
+
+<body>
+<section class="doctor_part section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        {% if not empty %}
+                        <h2> NO RESULT FOUND </h2>
+                        <a href = "{% url 'medical:patientreg'%}" class="btn_2 d-none d-lg-block">
+                            REGISTER
+                        </a>
+                        {% else %}
+                        <h2> SEARCH RESULT</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+            {% for patients in patient %}                 
+                 <div class="col-sm-6 col-lg-3">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="{{ patients.photo.url }}" alt="doctor">
+                            <div class="social_icon">
+                                <ul>
+                                    <li><a href="#"> <i class="ti-facebook"></i> </a></li>
+                                    <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
+                                    <li><a href="#"> <i class="ti-instagram"></i> </a></li>
+                                    <li><a href="#"> <i class="ti-skype"></i> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single_text">
+                            <div class="single_blog_text">
+                                <h3>{{patients}}</h3>
+                                <p>Patients token is {{patients.id}}</p>
+                                <br>
+                                <form method="POST">
+                                {% csrf_token %}
+                                <div style="float: right ">
+                                    <a href = "{% url 'medical:doctor_p' patients.id %}" class="btn_2 d-none d-lg-block">
+                                        add
+                                    </a>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endfor %}
+                </div>
+    </section>
+
+<div class="copyright_part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="{% static 'https://colorlib.com'%}" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                    <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"> <i class="ti-twitter"></i> </a>
+                        <a href="#"><i class="ti-instagram"></i></a>
+                        <a href="#"><i class="ti-skype"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- owl carousel js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <!-- contact js -->
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>
